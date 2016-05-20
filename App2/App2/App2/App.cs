@@ -1,5 +1,5 @@
-﻿using App1.Implementations;
-using App1.Views;
+﻿using App2.Implementations;
+using App2.Views;
 using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Views;
 using System;
@@ -9,24 +9,20 @@ using System.Text;
 
 using Xamarin.Forms;
 
-namespace App1
+namespace App2
 {
     public class App : Application
     {
         public App()
         {
-
+            // The root page of your application
             var nav = new NavigationService();
             nav.Configure(Locator.MainPage, typeof(MainPage));
             nav.Configure(Locator.SecondPage, typeof(SecondPage));
-            SimpleIoc.Default.Register<INavigationService>(()=>nav);
-
+            SimpleIoc.Default.Register<INavigationService>(()=> nav);
             var mainPage = new NavigationPage(new MainPage());
             nav.Initialize(mainPage);
-            // The root page of your application
-            MainPage = mainPage;  
-
-            
+            MainPage = mainPage;
         }
 
         protected override void OnStart()
